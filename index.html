@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Option Trading Studio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Option Trading MVP</p>
+          <h1>Model options, Greeks, and risk in seconds.</h1>
+          <p class="hero-copy">
+            This lightweight workspace app gives traders a fast Black-Scholes calculator for
+            call and put options with instant delta, gamma, theta, vega, and rho outputs.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h2>Quick inputs</h2>
+          <form id="option-form">
+            <label>
+              Spot price
+              <input id="spot" type="number" step="0.01" value="100" />
+            </label>
+            <label>
+              Strike price
+              <input id="strike" type="number" step="0.01" value="100" />
+            </label>
+            <label>
+              Risk-free rate (%)
+              <input id="rate" type="number" step="0.01" value="5" />
+            </label>
+            <label>
+              Volatility (%)
+              <input id="volatility" type="number" step="0.01" value="20" />
+            </label>
+            <label>
+              Days to expiry
+              <input id="days" type="number" step="1" value="365" />
+            </label>
+            <label>
+              Option type
+              <select id="optionType">
+                <option value="call">Call</option>
+                <option value="put">Put</option>
+              </select>
+            </label>
+            <button type="submit">Calculate</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="results-grid" aria-live="polite">
+        <article class="result-card highlight">
+          <p class="label">Option premium</p>
+          <h3 id="premiumValue">—</h3>
+        </article>
+        <article class="result-card">
+          <p class="label">Delta</p>
+          <h3 id="deltaValue">—</h3>
+        </article>
+        <article class="result-card">
+          <p class="label">Gamma</p>
+          <h3 id="gammaValue">—</h3>
+        </article>
+        <article class="result-card">
+          <p class="label">Theta</p>
+          <h3 id="thetaValue">—</h3>
+        </article>
+        <article class="result-card">
+          <p class="label">Vega</p>
+          <h3 id="vegaValue">—</h3>
+        </article>
+        <article class="result-card">
+          <p class="label">Rho</p>
+          <h3 id="rhoValue">—</h3>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
