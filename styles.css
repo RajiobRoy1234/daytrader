@@ -92,6 +92,99 @@ button {
   cursor: pointer;
 }
 
+.sector-section {
+  margin-top: 2.2rem;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.sector-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.sector-card {
+  background: rgba(8, 18, 33, 0.92);
+  border: 1px solid rgba(112, 224, 255, 0.2);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+.sector-card.up {
+  border-color: rgba(69, 214, 126, 0.35);
+}
+
+.sector-card.down {
+  border-color: rgba(255, 117, 117, 0.28);
+}
+
+.sector-card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sector-symbol {
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: #70e0ff;
+}
+
+.sector-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.sector-price {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sector-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+  font-weight: 700;
+}
+
+.sector-change {
+  color: #ff7a7a;
+}
+
+.sector-card.up .sector-change {
+  color: #5fe68b;
+}
+
+.sector-card.down .sector-change {
+  color: #ff7a7a;
+}
+
+.sector-change-percent {
+  color: #dce9f4;
+}
+
+.sector-stocks {
+  margin: 0;
+  color: #aac2d9;
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
 .results-grid {
   margin-top: 2rem;
   display: grid;

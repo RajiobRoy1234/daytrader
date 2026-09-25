@@ -1,4 +1,5 @@
 import { blackScholesOption } from './src/optionPricing.js';
+import { getSectorSnapshots } from './src/sectorData.js';
 
 const form = document.querySelector('#option-form');
 const premiumValue = document.querySelector('#premiumValue');
@@ -7,6 +8,7 @@ const gammaValue = document.querySelector('#gammaValue');
 const thetaValue = document.querySelector('#thetaValue');
 const vegaValue = document.querySelector('#vegaValue');
 const rhoValue = document.querySelector('#rhoValue');
+const sectorList = document.querySelector('#sector-list');
 
 function formatCurrency(value) {
   return new Intl.NumberFormat('en-US', {
@@ -18,6 +20,36 @@ function formatCurrency(value) {
 
 function formatPercent(value) {
   return `${value.toFixed(4)}%`;
+}
+
+function renderSectorSnapshots() {
+  if (!sectorList) {
+    return;
+  }
+
+  const sectors = getSectorSnapshots();
+  sectorList.innerHTML = sectors
+    .map((sector) => {
+      const changeClass = sector.change >= 0 ? 'up' : 'down';
+      const changePrefix = sector.change >= 0 ? '+' : '';
+      return `
+        <article class="sector-card ${changeClass}">
+          <div class="sector-card-header">
+            <div>
+              <p class="sector-symbol">${sector.symbol}</p>
+              <h3>${sector.name}</h3>
+            </div>
+            <div class="sector-price">${formatCurrency(sector.price)}</div>
+          </div>
+          <div class="sector-meta">
+            <span class="sector-change">${changePrefix}${sector.change.toFixed(2)}</span>
+            <span class="sector-change-percent">${changePrefix}${sector.changePercent.toFixed(2)}%</span>
+          </div>
+          <p class="sector-stocks">Stocks: ${sector.stocks.join(', ')}</p>
+        </article>
+      `;
+    })
+    .join('');
 }
 
 function renderResults(result) {
@@ -54,3 +86,4 @@ const defaultResult = blackScholesOption({
   optionType: 'call'
 });
 renderResults(defaultResult);
+renderSectorSnapshots();
